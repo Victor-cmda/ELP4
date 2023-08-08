@@ -30,33 +30,33 @@
 
         public string Nome
         {
-            get => this.Nome;
-            set => Nome = value;
+            get => this.nome;
+            set => nome = value;
         }
         public string Endereco
         {
-            get => this.Endereco;
-            set => Endereco = value;
+            get => this.endereco;
+            set => endereco = value;
         }
-        public string Sexo
+        public char Sexo
         {
-            get => this.Sexo;
-            set => Sexo = value;
+            get => this.sexo;
+            set => sexo = value;
         }
         public string CPF
         {
-            get => this.CPF;
-            set => CPF = value;
+            get => this.cpf;
+            set => cpf = value;
         }
-        public string Idade
+        public int Idade
         {
-            get => this.Idade;
-            set => Idade = value;
+            get => this.idade;
+            set => idade = value;
         }
         public string Celular
         {
-            get => this.Celular;
-            set => Celular = value;
+            get => this.celular;
+            set => celular = value;
         }
     }
 }

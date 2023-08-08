@@ -30,14 +30,44 @@ namespace ProjetoPessoaFuncionario.Class
 
         public string CNPJ
         {
-            get => this.CNPJ;
-            set => CNPJ = value;
+            get => this.cnpj;
+            set => cnpj = value;
         }
 
         public int NrFuncionarios
         {
-            get => this.NrFuncionarios;
-            set => NrFuncionarios = value;
+            get => this.nrfuncionarios;
+            set => nrfuncionarios = value;
+        }
+
+        public double TotalSalBruto()
+        {
+            //realizar calculo de total salário bruto de todos funcionários
+            return 1;
+        }
+
+        public double TotalSalLiq()
+        {
+            //realizar calculo de total salário liquido de todos funcionários
+            return 1;
+        }
+
+        public double TotalDescIR()
+        {
+            //realizar calculo de total salário liquido de todos funcionários
+            return 1;
+        }
+
+        public double TotalDescINSS()
+        {
+            //realizar calculo de total de INSS de todos funcionários
+            return 1;
+        }
+
+        public double ProcessaFolha()
+        {
+            //realizar calculo de total de INSS de todos funcionários
+            return 1;
         }
     }
 }

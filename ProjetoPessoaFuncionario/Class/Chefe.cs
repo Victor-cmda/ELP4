@@ -21,14 +21,80 @@
 
         public string Departamento
         {
-            get => this.Departamento;
-            set => Departamento = value;
+            get => this.departamento;
+            set => departamento = value;
         }
 
         public double GratificacaoChefe
         {
-            get => this.GratificacaoChefe;
-            set => GratificacaoChefe = value;
+            get => this.gratificacaoChefe;
+            set => gratificacaoChefe = value;
+        }
+
+        public void PecaDadosChefe()
+        {
+            Console.WriteLine("Informe os dados do funcionário:");
+
+            Console.Write("Nome: ");
+            Nome = Console.ReadLine();
+
+            Console.Write("Endereço: ");
+            Endereco = Console.ReadLine();
+
+            Console.Write("Sexo: ");
+            char sexo;
+            if (char.TryParse(Console.ReadLine(), out sexo))
+            {
+                Sexo = sexo;
+            }
+            else
+            {
+                Console.WriteLine("Sexo inválido.");
+            }
+
+            Console.Write("CPF: ");
+            CPF = Console.ReadLine().ToString();
+
+            Console.Write("Idade: ");
+            int idade;
+            if (int.TryParse(Console.ReadLine(), out idade))
+            {
+                Idade = idade;
+            }
+            else
+            {
+                Console.WriteLine("Idade inválida.");
+            }
+
+            Console.Write("Celular: ");
+            Celular = Console.ReadLine();
+
+            Console.Write("Matrícula: ");
+            Matricula = Console.ReadLine();
+
+            //Console.Write("Gratificação: ");
+            //double gratificacaoChefe;
+            //if (double.TryParse(Console.ReadLine(), out gratificacaoChefe))
+            //{
+            //    GratificacaoChefe = gratificacaoChefe;
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Gratificação inválido.");
+            //}
+
+            Console.Write("Salário: ");
+            double salario;
+            if (double.TryParse(Console.ReadLine(), out salario))
+            {
+                Salario = salario;
+            }
+            else
+            {
+                Console.WriteLine("Salário inválido.");
+            }
+
+            Console.WriteLine("Dados do funcionário foram coletados.");
         }
     }
 }

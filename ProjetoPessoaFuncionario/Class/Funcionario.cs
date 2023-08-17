@@ -3,25 +3,30 @@
 public class Funcionario : Pessoas
 {
     protected string matricula;
-    protected double salario;
-    protected int nrdependente;
-    protected string escolaridade;
+    protected double salarioBase;
+    protected double gratProd;
+    protected int numDep;
+    protected char cargo;
 
-    public Funcionario()
+    public Funcionario() : base()
     {
         matricula = "";
-        salario = 0.0;
-        nrdependente = 0;
-        escolaridade = "";
+        salarioBase = 0.0;
+        gratProd = 0;
+        cargo = ' ';
     }
 
-    public Funcionario(string Nome, string Endereco, char Sexo, string CPF, int Idade, string Celular, string Matricula, double Salario, int NrDependente, string Escolaridade)
-        : base(Nome, Endereco, Sexo, CPF, Idade, Celular)
+    public Funcionario(string Nome, char Sexo, int Idade, string Matricula, double Salario, int NrDependente, char Cargo, int numDep)
+        : base(Nome, Sexo, Idade)
     {
+        this.nome = Nome;
+        this.idade = Idade;
+        this.sexo = Sexo;
         this.matricula = Matricula;
-        this.salario = Salario;
-        this.nrdependente = NrDependente;
-        this.escolaridade = Escolaridade;
+        this.salarioBase = Salario;
+        this.gratProd = NrDependente;
+        this.cargo = Cargo;
+        this.numDep = numDep;
     }
 
     public string Matricula
@@ -29,29 +34,35 @@ public class Funcionario : Pessoas
         get => this.matricula;
         set => matricula = value;
     }
-    public double Salario
+    public double SalarioBase
     {
-        get => this.salario;
-        set => salario = value;
+        get => this.salarioBase;
+        set => salarioBase = value;
     }
-    public int NrDependente
+    public int NumDep
     {
-        get => this.nrdependente;
-        set => nrdependente = value;
+        get => this.numDep;
+        set => numDep = value;
     }
-    public string Escolaridade
+    public double GratProd
     {
-        get => this.escolaridade;
-        set => escolaridade = value;
+        get => this.gratProd;
+        set => gratProd = value;
     }
-    public double CalcSalBruto()
+    public char Cargo
     {
-        //realizar calculo de salário bruto
-        return this.salario;
+        get => this.cargo;
+        set => cargo = value;
     }
+
+    public virtual  double SalarioBruto()
+    {
+        return this.salarioBase + this.gratProd;
+    }
+
     public double CalcINSS()
     {
-        double salario = this.salario;
+        double salario = this.salarioBase;
 
         double descontoINSS = 0.0;
 
@@ -82,7 +93,7 @@ public class Funcionario : Pessoas
 
     public double CalcIR()
     {
-        double salario = this.salario;
+        double salario = this.salarioBase;
 
         double descontoIR = 0.0;
 
@@ -112,26 +123,17 @@ public class Funcionario : Pessoas
 
     public double CalcDesc()
     {
-        var inss = CalcINSS();
-        var ir = CalcIR();
-
-        return inss + ir;
+        return (CalcINSS() + CalcIR());
     }
 
-    public double CalcSalLiq()
+    public virtual double CalcSalLiq()
     {
-        var calcDesc = CalcDesc();
-        return this.salario - calcDesc;
-    }
-
-    public double CalcAuxilioEducacao()
-    {
-        return this.nrdependente * 100;
+        return (this.SalarioBruto() - this.CalcDesc());
     }
 
     public double CalcGratificacao()
     {
-        
-        return this.salario * 0.10;
+
+        return this.salarioBase * 0.10;
     }
 }

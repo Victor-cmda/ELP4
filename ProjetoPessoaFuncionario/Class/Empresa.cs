@@ -6,20 +6,36 @@ namespace ProjetoPessoaFuncionario.Class
     {
         protected string razaoSocial;
         protected string cnpj;
-        protected int nrfuncionarios;
+        protected int numFuncionarios;
+
+        protected double totalSalBruto = 0;
+        protected double totalSalLiquido = 0;
+        protected double totalDesc = 0;
+        protected double totalInss = 0;
+        protected double totalIr = 0;
 
         public Empresa()
         {
             razaoSocial = "";
             cnpj = "";
-            nrfuncionarios = 0;
+            numFuncionarios = 0;
+            totalSalBruto = 0;
+            totalSalLiquido = 0;
+            totalDesc = 0;
+            totalInss = 0;
+            totalIr = 0;
         }
 
-        public Empresa(string RazaoSocial, string CNPJ, int NrFuncionarios)
+        public Empresa(string RazaoSocial, string CNPJ, int NumFuncionarios, double TotalSalBruto, double TotalSalLiquido, double TotalDesc, double TotalINSS, double TotalIR)
         {
-            razaoSocial = RazaoSocial;
-            cnpj = CNPJ;
-            nrfuncionarios = NrFuncionarios;
+            this.razaoSocial = RazaoSocial;
+            this.cnpj = CNPJ;
+            this.numFuncionarios = NumFuncionarios;
+            totalSalBruto = TotalSalBruto;
+            totalSalLiquido = TotalSalBruto;
+            totalDesc = TotalDesc;
+            totalIr = TotalIR;
+            totalInss = TotalINSS;
         }
 
         public string RazaoSocial
@@ -34,10 +50,10 @@ namespace ProjetoPessoaFuncionario.Class
             set => cnpj = value;
         }
 
-        public int NrFuncionarios
+        public int NumFuncionarios
         {
-            get => this.nrfuncionarios;
-            set => nrfuncionarios = value;
+            get => this.numFuncionarios;
+            set => numFuncionarios = value;
         }
 
         public double TotalSalBruto()

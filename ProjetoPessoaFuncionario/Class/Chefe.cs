@@ -4,6 +4,10 @@
     {
         protected double gratificacaoChefe = 0;
 
+        public Chefe(string Nome, char Sexo, int Idade, int Matricula, double Salario, double gratProd, char Cargo, int numDep) : base(Nome, Sexo, Idade, Matricula, Salario, gratProd, Cargo, numDep)
+        {
+        }
+
         public double GratificacaoChefe
         {
             get => gratificacaoChefe;

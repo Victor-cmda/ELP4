@@ -1,11 +1,10 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace ProjetoPessoaFuncionario.Interfaces
+﻿namespace ProjetoPessoaFuncionario
 {
     public class Interfaces
     {
         public Interfaces()
         {
+
         }
 
         public void PecaDadosFuncionario(ref string nome, ref char sexo, ref int idade, ref int matricula,
@@ -55,9 +54,13 @@ namespace ProjetoPessoaFuncionario.Interfaces
             int.TryParse(Console.ReadLine(), out numFunc);
         }
 
-        public void Demonstrativo(string nome, double salBruto, double desc, double salLiquido)
+        public void DemonstrativoEmpresa(string nome, double salBruto, double desc, double salLiquido)
         {
-            Console.WriteLine($"Nome {0} Sal. Bruto= {1} Descontos= {2} Sal. Liquido= {3}", nome, salBruto, desc, salLiquido);
+            Console.WriteLine($"Nome {nome} Sal. Bruto= {salBruto} Descontos= {desc} Sal. Liquido= {salLiquido}");
+        }
+        public void DemonstrativoFuncionario(string nome, double salBruto, double desconto, double salLiquido)
+        {
+            Console.WriteLine($"Nome {nome} Sal. Bruto= {salBruto} Desconto= {desconto} Salário Liq.= {salLiquido}");
         }
     }
 }

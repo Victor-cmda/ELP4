@@ -2,7 +2,7 @@
 
 public class Funcionario : Pessoas
 {
-    protected string matricula;
+    protected int matricula;
     protected double salarioBase;
     protected double gratProd;
     protected int numDep;
@@ -10,13 +10,13 @@ public class Funcionario : Pessoas
 
     public Funcionario() : base()
     {
-        matricula = "";
+        matricula = 0;
         salarioBase = 0.0;
         gratProd = 0;
         cargo = ' ';
     }
 
-    public Funcionario(string Nome, char Sexo, int Idade, string Matricula, double Salario, int NrDependente, char Cargo, int numDep)
+    public Funcionario(string Nome, char Sexo, int Idade, int Matricula, double Salario, double gratProd, char Cargo, int numDep)
         : base(Nome, Sexo, Idade)
     {
         this.nome = Nome;
@@ -24,12 +24,12 @@ public class Funcionario : Pessoas
         this.sexo = Sexo;
         this.matricula = Matricula;
         this.salarioBase = Salario;
-        this.gratProd = NrDependente;
+        this.gratProd = gratProd;
         this.cargo = Cargo;
         this.numDep = numDep;
     }
 
-    public string Matricula
+    public int Matricula
     {
         get => this.matricula;
         set => matricula = value;
@@ -129,11 +129,5 @@ public class Funcionario : Pessoas
     public virtual double CalcSalLiq()
     {
         return (this.SalarioBruto() - this.CalcDesc());
-    }
-
-    public double CalcGratificacao()
-    {
-
-        return this.salarioBase * 0.10;
     }
 }

@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("teste");
+        Aplicacao app = new Aplicacao();
+        app.Executar();
     }
 }

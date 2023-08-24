@@ -8,9 +8,9 @@ namespace ProjetoPessoaFuncionario.Class
         protected string cnpj;
         protected int numFuncionarios;
 
+        Funcionario oFunc;
         protected double totalSalBruto = 0;
         protected double totalSalLiquido = 0;
-        protected double totalDesc = 0;
         protected double totalInss = 0;
         protected double totalIr = 0;
 
@@ -21,21 +21,15 @@ namespace ProjetoPessoaFuncionario.Class
             numFuncionarios = 0;
             totalSalBruto = 0;
             totalSalLiquido = 0;
-            totalDesc = 0;
             totalInss = 0;
             totalIr = 0;
         }
 
-        public Empresa(string RazaoSocial, string CNPJ, int NumFuncionarios, double TotalSalBruto, double TotalSalLiquido, double TotalDesc, double TotalINSS, double TotalIR)
+        public Empresa(string RazaoSocial, string CNPJ, int NumFuncionarios)
         {
             this.razaoSocial = RazaoSocial;
             this.cnpj = CNPJ;
             this.numFuncionarios = NumFuncionarios;
-            totalSalBruto = TotalSalBruto;
-            totalSalLiquido = TotalSalBruto;
-            totalDesc = TotalDesc;
-            totalIr = TotalIR;
-            totalInss = TotalINSS;
         }
 
         public string RazaoSocial
@@ -56,34 +50,50 @@ namespace ProjetoPessoaFuncionario.Class
             set => numFuncionarios = value;
         }
 
-        public double TotalSalBruto()
+        public void ProcessaFolha(Interfaces aInter)
         {
-            //realizar calculo de total salário bruto de todos funcionários
-            return 1;
+            string nome = "";
+            char sexo = ' ';
+            int idade = 0;
+            int matricula = 0;
+            double salBase = 0;
+            double gratProd = 0;
+            int numDep = 0;
+            char cargo = ' ';
+            double gratChefia = 0;
+
+            int conta = 0;
+
+            while (conta <= numFuncionarios)
+            {
+                aInter.PecaDadosFuncionario(ref nome, ref sexo, ref idade, ref matricula, ref salBase, ref gratProd, ref numDep, ref cargo, ref gratChefia);
+                if (cargo == 'F')
+                {
+                    oFunc = new Funcionario(nome, sexo, idade, matricula, salBase, gratProd, cargo, numDep);
+                }
+                else if (cargo == 'A')
+                    {
+                    oFunc = new Apoio(nome, sexo, idade, matricula, salBase, gratProd, cargo, numDep);
+                }
+                else if (cargo == 'C')
+                {
+                    oFunc = new Chefe(nome, sexo, idade, matricula, salBase, gratProd, cargo, numDep);
+                }
+                totalSalBruto += oFunc.SalarioBruto();
+                totalInss += oFunc.CalcINSS();
+                totalIr += oFunc.CalcIR();
+                totalSalLiquido += oFunc.CalcSalLiq();
+                aInter.DemonstrativoFuncionario(oFunc.Nome,oFunc.SalarioBruto(),oFunc.CalcDesc(),oFunc.CalcSalLiq());
+                aInter.DemonstrativoEmpresa(razaoSocial, totalSalBruto, CalcDesc(), totalSalLiquido);
+                conta++;
+            }
+
+
         }
 
-        public double TotalSalLiq()
+        private double CalcDesc()
         {
-            //realizar calculo de total salário liquido de todos funcionários
-            return 1;
-        }
-
-        public double TotalDescIR()
-        {
-            //realizar calculo de total salário liquido de todos funcionários
-            return 1;
-        }
-
-        public double TotalDescINSS()
-        {
-            //realizar calculo de total de INSS de todos funcionários
-            return 1;
-        }
-
-        public double ProcessaFolha()
-        {
-            //realizar calculo de total de INSS de todos funcionários
-            return 1;
+            return (totalInss + totalIr);
         }
     }
 }

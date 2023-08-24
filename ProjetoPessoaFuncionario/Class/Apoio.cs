@@ -4,6 +4,10 @@ namespace ProjetoPessoaFuncionario.Class
 {
     public class Apoio : Funcionario
     {
+        public Apoio(string Nome, char Sexo, int Idade, int Matricula, double Salario, double gratProd, char Cargo, int numDep) : base(Nome, Sexo, Idade, Matricula, Salario, gratProd, Cargo, numDep)
+        {
+        }
+
         public double CalcAuxilioEducacao()
         {
             var numDep = this.numDep;
